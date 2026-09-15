@@ -1,7 +1,7 @@
 <a id="top"></a>
 
 <p align="center">
-  <img src="addon/content/icons/icon-256.png" width="152" height="152" alt="Zotero Moonlight — a glossy red Z on a golden moon">
+  <img src="addon/content/icons/icon-256.png" width="152" height="152" alt="Zotero Moonlight — a ruby glass Z embraced by a golden glass crescent">
 </p>
 
 <h1 align="center">Zotero Moonlight</h1>
@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="dist/zotero-moonlight-0.2.1.xpi?raw=true"><img src="https://img.shields.io/badge/version-0.2.1-7c3aed?style=flat-square" alt="Version 0.2.1"></a>
+  <a href="dist/zotero-moonlight-0.2.2.xpi?raw=true"><img src="https://img.shields.io/badge/version-0.2.2-7c3aed?style=flat-square" alt="Version 0.2.2"></a>
   <img src="https://img.shields.io/badge/Zotero-9.0.x-cc2936?style=flat-square" alt="Zotero 9.0.x">
   <img src="https://img.shields.io/badge/tested_on-Windows-2563eb?style=flat-square" alt="Tested on Windows">
   <img src="https://img.shields.io/badge/built_with-TypeScript-3178c6?style=flat-square" alt="Built with TypeScript">
 </p>
 
 <p align="center">
-  <a href="dist/zotero-moonlight-0.2.1.xpi?raw=true"><strong>Download plugin · v0.2.1</strong></a>
+  <a href="dist/zotero-moonlight-0.2.2.xpi?raw=true"><strong>Download plugin · v0.2.2</strong></a>
   &nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
   &nbsp;·&nbsp; <a href="docs/README.ko.md">한국어</a>
   &nbsp;·&nbsp; <a href="#questions">FAQ</a>
@@ -64,7 +64,7 @@ The plugin starts with the paper's online address. Direct PDF links and arXiv re
 
 You need **Zotero 9.0.x**. Windows with Zotero 9.0.6 is the verified environment; macOS and Linux are unverified.
 
-**[Download zotero-moonlight-0.2.1.xpi](dist/zotero-moonlight-0.2.1.xpi?raw=true)**, then open:
+**[Download zotero-moonlight-0.2.2.xpi](dist/zotero-moonlight-0.2.2.xpi?raw=true)**, then open:
 
 **Zotero → Tools → Plugins → ⚙ → Install Plugin From File…**
 

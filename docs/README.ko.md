@@ -1,7 +1,7 @@
 <a id="top"></a>
 
 <p align="center">
-  <img src="../addon/content/icons/icon-256.png" width="152" height="152" alt="노란 달 중앙에 빨간 Z를 배치한 Zotero Moonlight 로고">
+  <img src="../addon/content/icons/icon-256.png" width="152" height="152" alt="투명 배경의 금빛 유리 초승달과 빨간 유리 Z 로고">
 </p>
 
 <h1 align="center">Zotero Moonlight</h1>
@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="../dist/zotero-moonlight-0.2.1.xpi?raw=true"><img src="https://img.shields.io/badge/version-0.2.1-7c3aed?style=flat-square" alt="버전 0.2.1"></a>
+  <a href="../dist/zotero-moonlight-0.2.2.xpi?raw=true"><img src="https://img.shields.io/badge/version-0.2.2-7c3aed?style=flat-square" alt="버전 0.2.2"></a>
   <img src="https://img.shields.io/badge/Zotero-9.0.x-cc2936?style=flat-square" alt="Zotero 9.0.x">
   <img src="https://img.shields.io/badge/tested_on-Windows-2563eb?style=flat-square" alt="Windows 검증">
   <img src="https://img.shields.io/badge/built_with-TypeScript-3178c6?style=flat-square" alt="TypeScript">
 </p>
 
 <p align="center">
-  <a href="../dist/zotero-moonlight-0.2.1.xpi?raw=true"><strong>플러그인 다운로드 · v0.2.1</strong></a>
+  <a href="../dist/zotero-moonlight-0.2.2.xpi?raw=true"><strong>플러그인 다운로드 · v0.2.2</strong></a>
   &nbsp;·&nbsp; <a href="#quick-start">빠른 시작</a>
   &nbsp;·&nbsp; <a href="../README.md">English</a>
   &nbsp;·&nbsp; <a href="#questions">자주 묻는 질문</a>
@@ -68,7 +68,7 @@ Zotero에서 고른 논문을 **Zotero 내부 탭** 또는 **Chrome / Edge**에�
 
 **Zotero 9.0.x**가 필요합니다. Windows · Zotero 9.0.6에서 검증했으며, macOS·Linux는 미검증입니다.
 
-**[zotero-moonlight-0.2.1.xpi 다운로드](../dist/zotero-moonlight-0.2.1.xpi?raw=true)** 후 Zotero에서 다음 메뉴를 엽니다.
+**[zotero-moonlight-0.2.2.xpi 다운로드](../dist/zotero-moonlight-0.2.2.xpi?raw=true)** 후 Zotero에서 다음 메뉴를 엽니다.
 
 **도구 → 플러그인 → ⚙ → 파일에서 플러그인 설치…**
 

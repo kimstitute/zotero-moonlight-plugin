@@ -24,3 +24,4 @@ assets/*
 dist/*
 !dist/zotero-moonlight-0.2.1.xpi
 !dist/SHA256SUMS
+!dist/zotero-moonlight-0.2.2.xpi

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Zotero Moonlight",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "첨부 PDF 없이도 논문 주소로 Moonlight에서 읽기",
   "applications": {
     "zotero": {
