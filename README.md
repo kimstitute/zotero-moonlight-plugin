@@ -1,113 +1,243 @@
-# Zotero Moonlight
+<a id="top"></a>
 
-<img src="addon/content/icons/icon-128.png" alt="달 중앙에 빨간 Zotero Z를 배치한 광택 있는 3D 로고" width="96" height="96"/>
+<p align="center">
+  <img src="addon/content/icons/icon-256.png" width="152" height="152" alt="Zotero Moonlight — a glossy red Z on a golden moon">
+</p>
 
-Zotero의 논문 URL·DOI를 이용해 Moonlight가 설치된 브라우저에서 읽는 플러그인입니다. **로컬 PDF 첨부가 없어도 작동합니다.**
+<h1 align="center">Zotero Moonlight</h1>
 
-현재 버전: **0.2.1**
+<p align="center">
+  <strong>Your library in Zotero. Your reading in Moonlight.</strong><br>
+  Open papers from their online addresses — even without a local PDF attachment.
+</p>
 
-검증 환경: **Windows · Zotero 9.0.6 · Chrome**
+<p align="center">
+  <a href="dist/zotero-moonlight-0.2.1.xpi?raw=true"><img src="https://img.shields.io/badge/version-0.2.1-7c3aed?style=flat-square" alt="Version 0.2.1"></a>
+  <img src="https://img.shields.io/badge/Zotero-9.0.x-cc2936?style=flat-square" alt="Zotero 9.0.x">
+  <img src="https://img.shields.io/badge/tested_on-Windows-2563eb?style=flat-square" alt="Tested on Windows">
+  <img src="https://img.shields.io/badge/built_with-TypeScript-3178c6?style=flat-square" alt="Built with TypeScript">
+</p>
 
-## 설치
+<p align="center">
+  <a href="dist/zotero-moonlight-0.2.1.xpi?raw=true"><strong>Download plugin · v0.2.1</strong></a>
+  &nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
+  &nbsp;·&nbsp; <a href="docs/README.ko.md">한국어</a>
+  &nbsp;·&nbsp; <a href="#questions">FAQ</a>
+</p>
 
-1. [설치 파일 다운로드](dist/zotero-moonlight-0.2.1.xpi?raw=true)를 눌러 `.xpi`를 저장합니다. 기존 버전 위에 설치하면 업데이트됩니다.
-2. Zotero의 **도구 → 플러그인**을 엽니다. 영문 UI에서는 **Tools → Plugins**입니다.
-3. 톱니바퀴 메뉴에서 **파일에서 플러그인 설치… / Install Plugin From File…**를 선택하고 `.xpi`를 엽니다.
-4. **도구 → Moonlight 설정…**에서 Moonlight가 설치된 Chrome 또는 Edge를 선택합니다.
-5. **저장하고 Moonlight 열기**로 원하는 브라우저 프로필과 로그인 상태를 확인합니다.
+---
 
-Moonlight 확장 프로그램은 별도로 설치되어 있어야 합니다. Moonlight 로그인과 구독은 브라우저에서 유지됩니다. 이 플러그인에는 API 키가 필요하지 않습니다.
+## Overview
 
-## 사용
+Choose a paper in Zotero, then read it with your Moonlight account. Right-click to open it in a **Zotero tab** or in **Chrome / Edge**.
 
-논문 항목 하나를 선택하고 우클릭 → **Moonlight → Moonlight로 읽기**를 실행합니다.
+The plugin starts with the paper's online address. Direct PDF links and arXiv records can open immediately; for other sources, it looks for an explicit PDF link on the publisher's page. You can also connect a Zotero item to a Moonlight document you already use.
 
-- **직접 PDF 링크:** 해당 주소를 브라우저로 엽니다. Zotero에서 PDF를 다운로드하거나 Moonlight에 다시 업로드하지 않습니다.
-- **arXiv 논문 페이지 또는 arXiv DOI:** 온라인 PDF 주소로 변환해 엽니다. 버전 번호를 유지합니다.
-- **일반 논문 페이지·DOI:** 페이지에 명시된 PDF 주소를 찾습니다. 여러 후보가 있으면 선택할 수 있습니다.
-- **로그인이 필요하거나 PDF 주소를 찾지 못한 경우:** 원문 페이지를 열어 브라우저에서 접근할 수 있습니다. 로컬 PDF가 있는 경우 해당 파일을 사용하는 선택지도 제공합니다.
-- **로컬 PDF만 있는 경우:** 브라우저에서 파일을 엽니다. Moonlight 확장 프로그램의 파일 URL 접근 설정이 필요합니다. 작동하지 않으면 공식 웹 업로드를 사용하세요.
+**Choose a paper → Find its online PDF → Read in Moonlight**
 
-Chrome 기본 PDF 화면이 표시되면 **왼쪽 아래 Moonlight 전환 버튼**을 누릅니다. 플러그인은 Moonlight 확장의 기본 뷰어 설정을 변경하지 않습니다.
+> [!NOTE]
+> This is an unofficial integration. Moonlight handles login, subscriptions, and AI features. No API key is required. **Zotero's internal tab uses the Moonlight website and does not require the Chrome extension.**
 
-Zotero PDF 리더의 본문 우클릭 메뉴에서도 **Moonlight로 읽기**를 실행할 수 있습니다.
+<p align="center">
+  <a href="#features">Features</a> &nbsp;·&nbsp;
+  <a href="#quick-start">Installation</a> &nbsp;·&nbsp;
+  <a href="#reading-modes">Reading modes</a> &nbsp;·&nbsp;
+  <a href="#everyday-use">Usage</a> &nbsp;·&nbsp;
+  <a href="#data-and-privacy">Data</a> &nbsp;·&nbsp;
+  <a href="#development">Development</a>
+</p>
 
-## Zotero 내부 탭에서 읽기 — 0.2.0
+## Features
 
-논문을 우클릭하고 **Moonlight → Zotero 탭에서 읽기**를 선택합니다. Zotero 상단에 `Moonlight · 논문 제목` 탭이 열립니다.
+| | What you get |
+| :--- | :--- |
+| **🌐 Read from a link** | Use a PDF link, arXiv URL, or DOI without attaching a local PDF first. |
+| **🌙 Stay in Zotero** | Read in a tab with back, forward, reload, library, and external-browser controls. |
+| **🧭 Choose your browser** | Open the source in Chrome or Edge and use its Moonlight extension. |
+| **🔗 Connect a document** | Save a Moonlight document URL for a Zotero item and reuse it next time. |
+| **📖 Resume an open tab** | Reopening the same paper selects its existing tab and preserves the reading position. |
+| **📄 Use a fallback** | Open the publisher's page, or an already-local PDF when the fallback is enabled. |
 
-항상 내부 탭으로 열려면 **도구 → Moonlight 설정… → 기본 열기 방식 → Zotero 내부 탭에서 열기**로 바꿉니다. 기존 설치의 기본값은 브라우저 열기로 유지됩니다. **브라우저에서 읽기** 메뉴로 언제든 외부 브라우저를 사용할 수 있습니다.
+## Quick start
 
-- 내부 탭은 Moonlight 웹 리더를 사용합니다. Chrome 확장 프로그램은 필요하지 않습니다.
-- PDF 주소는 Moonlight 웹사이트의 URL 열기 경로로 전달됩니다. 로컬 첨부가 없어도 됩니다.
-- Chrome과 로그인 상태가 별도입니다. **Moonlight에 처음 한 번 로그인해야 할 수 있습니다.** 웹사이트에서 로그인·구독이 적용되며 플러그인이 계정 정보를 옮기지 않습니다.
-- 뒤로·앞으로·새로고침·라이브러리·브라우저에서 열기 버튼을 제공합니다.
-- 같은 논문을 다시 열면 기존 탭과 읽던 위치를 유지합니다. 문서 연결을 다른 주소로 바꾸면 새 주소로 이동합니다.
-- 로그인 팝업이나 특정 논문 로딩이 작동하지 않으면 탭 상단의 **브라우저에서 열기**를 사용하세요. Google 로그인과 로그인 후 AI 기능은 사용자 계정에서 추가 확인이 필요합니다.
-- 내부 탭은 재시작 후 자동 복원하지 않습니다. 문서 연결은 유지되므로 논문에서 다시 열 수 있습니다.
-- 온라인 PDF 주소를 찾지 못했거나 로컬 파일만 있는 경우에는 기존 외부 브라우저 경로를 사용합니다.
+### 1. Install
 
-## 읽던 Moonlight 문서 연결
+You need **Zotero 9.0.x**. Windows with Zotero 9.0.6 is the verified environment; macOS and Linux are unverified.
 
-1. Moonlight에서 읽던 문서의 웹 주소를 복사합니다.
-2. 해당 Zotero 논문에서 **Moonlight → Moonlight 문서 연결…**을 실행합니다.
-3. 링크를 붙여 넣고 확인합니다.
+**[Download zotero-moonlight-0.2.1.xpi](dist/zotero-moonlight-0.2.1.xpi?raw=true)**, then open:
 
-이후 `Moonlight로 읽기`는 연결한 문서를 우선 엽니다. **원문에서 다시 열기**는 연결 주소를 건너뛰고 논문 URL부터 다시 처리합니다. 연결 창에서 주소를 지우고 확인하면 연결이 해제됩니다.
+**Zotero → Tools → Plugins → ⚙ → Install Plugin From File…**
 
-연결은 현재 Zotero 프로필에만 저장되며 다른 기기로 자동 동기화되지 않습니다. 원래 논문의 URL·DOI·첨부와 노트는 수정하지 않습니다. Moonlight의 문서 주소를 자동으로 수집하거나 문서 생성 중복을 자동으로 방지하는 기능은 포함하지 않습니다.
+Choose the downloaded `.xpi`. In Korean Zotero: **도구 → 플러그인 → ⚙ → 파일에서 플러그인 설치…**. Install over an existing version to update it. Updates are currently manual.
 
-## 브라우저 설정
+Use the `.xpi` for installation. GitHub's source ZIP is for development.
 
-- 실행 파일을 비워 두면 Windows의 일반적인 Chrome·Edge 설치 위치를 찾습니다.
-- 프로필 폴더를 비워 두면 브라우저의 기본 실행 동작을 사용합니다.
-- 특정 프로필을 사용하려면 `Default`, `Profile 1` 등의 폴더 이름을 입력합니다. 화면에 표시되는 계정 이름과는 다릅니다.
-- Chrome에서는 `chrome://version`의 프로필 경로로 폴더 이름을 확인할 수 있습니다.
-- macOS·Linux에서는 실행 파일을 직접 지정하는 코드 경로가 있으나 이번 릴리스의 검증 범위는 Windows입니다.
+### 2. Choose where to read
 
-## 현재 제약
+Open **Tools → Moonlight 설정…** and set **기본 열기 방식**:
 
-- 내부 탭은 Moonlight 웹 리더를 표시합니다. Zotero 자체 PDF 리더 위에 번역·주석을 겹쳐 표시하는 기능은 아닙니다.
-- 일반 출판사의 모든 논문 페이지에서 PDF를 자동으로 찾는다고 보장하지 않습니다. 로그인·기관 인증은 사용자의 브라우저에서 처리합니다.
-- 조회는 최대 5개 페이지, 페이지당 6초, HTML 최대 약 2 MiB로 제한합니다. 응답 헤더가 PDF이면 본문을 저장하지 않고 중단합니다.
-- 직접 PDF처럼 보이는 URL은 지연과 불필요한 다운로드를 줄이기 위해 사전 요청 없이 브라우저로 전달합니다. 실제 접근 성공 여부는 브라우저에서 확인합니다.
-- 외부 브라우저 모드에서는 Moonlight 확장 프로그램의 설정에 따라 전환 버튼을 한 번 눌러야 할 수 있습니다.
-- 브라우저 실행과 Moonlight 문서 로딩·구독 적용 완료는 다릅니다. 플러그인은 브라우저 실행까지만 안내합니다.
-- 노트 가져오기와 주석 동기화는 후속 개발 범위입니다.
-- **자동 업데이트 서버는 아직 없습니다.** Zotero 9의 필수 `update_url`에는 외부 서비스로 연결되지 않는 예약 도메인 `.invalid`를 사용했습니다. 새 버전은 `.xpi`를 수동으로 설치합니다.
+| Option | Setup |
+| :--- | :--- |
+| **Zotero 내부 탭에서 열기** | Sign in to Moonlight inside Zotero when prompted. No browser extension is required. |
+| **Chrome / Edge에서 열기** | Install Moonlight's extension in your chosen browser and sign in there. Select Chrome or Edge in settings. |
 
-## 개발 및 검증
+Click **저장** to save, or **저장하고 Moonlight 열기** to save and open Moonlight. External browser mode is the initial default.
 
-Node.js 24 이상과 Python 3가 필요합니다. 런타임 의존성은 없습니다. TypeScript는 개발 검증에만 사용합니다.
+### 3. Open a paper
 
-```powershell
+Select **one paper** in Zotero, then right-click:
+
+**Moonlight → Moonlight로 읽기**
+
+The item needs a usable URL, DOI, or online attachment link. An arXiv abstract URL, for example, resolves to an online PDF without a local attachment.
+
+Plugin menu labels are currently in Korean, including in an English Zotero interface. This guide uses the exact labels you will see.
+
+## Reading modes
+
+| | Zotero tab | External browser |
+| :--- | :--- | :--- |
+| **Reader** | Moonlight website inside Zotero | Chrome / Edge with Moonlight extension |
+| **Login** | Sign in within Zotero | Selected browser profile's login |
+| **Browser extension** | Not required | Required for Moonlight's PDF integration |
+| **Open directly** | `Zotero 탭에서 읽기` | `브라우저에서 읽기` |
+| **If loading fails** | Use the tab's `브라우저에서 열기` button | Open the publisher page and check access there |
+
+**Login sessions are separate.** Signing in to Chrome does not sign in to Zotero's internal tab.
+
+Internal tabs last for the current Zotero session and are not restored after a restart. Saved document connections remain available.
+
+## Everyday use
+
+| I want to… | Choose under **Moonlight** |
+| :--- | :--- |
+| Use my default reading mode | **Moonlight로 읽기** |
+| Read inside Zotero this time | **Zotero 탭에서 읽기** |
+| Read in Chrome / Edge this time | **브라우저에서 읽기** |
+| Retry the source instead of a saved document | **원문에서 다시 열기** |
+| Connect, replace, or clear a document link | **Moonlight 문서 연결…** |
+
+The Zotero PDF reader's context menu also provides Moonlight commands. A PDF attachment with a parent item uses the parent paper's metadata.
+
+### Connect a document you already read
+
+1. Copy the **document's web URL** from Moonlight.
+2. Select its paper in Zotero → **Moonlight → Moonlight 문서 연결…**.
+3. Paste the URL and confirm.
+
+The saved link takes priority next time. To disconnect it, open the same dialog, clear the field, and confirm. Use a document URL, rather than a homepage or login URL.
+
+### Configure an external browser
+
+The plugin detects standard Windows Chrome and Edge installations. If detection fails, use **찾아보기** in settings to choose the browser executable.
+
+Leave **브라우저 프로필 폴더** blank for the browser's normal behavior. To select a profile, enter its folder name, such as `Default` or `Profile 1`, rather than its display name.
+
+If Chrome shows its regular PDF viewer, click the **Moonlight switch button at the lower left**.
+
+## Questions
+
+<details>
+<summary><strong>Does this work without an attached PDF?</strong></summary>
+
+Yes, when the record has a usable online source. Direct PDF links and arXiv URLs are supported. For publisher pages and DOIs, the plugin looks for explicit PDF metadata. It cannot find a PDF on every site or bypass access restrictions.
+
+</details>
+
+<details>
+<summary><strong>Can I use my Moonlight subscription?</strong></summary>
+
+Sign in to your Moonlight account in the chosen reading environment. Moonlight applies the account's available features. Google sign-in popups and subscription AI features inside Zotero still need further manual verification; use the external browser if they do not work.
+
+</details>
+
+<details>
+<summary><strong>What if the paper requires institutional login?</strong></summary>
+
+Use the source-page fallback to open the publisher in your browser, complete its access flow, and open the PDF there. The plugin's metadata lookup does not reuse browser login cookies.
+
+</details>
+
+<details>
+<summary><strong>What if I only have a local PDF?</strong></summary>
+
+Enable **온라인 주소가 없으면 로컬 PDF 열기** in settings. The plugin opens an already-local attachment in the external browser; Moonlight's extension may need permission to access file URLs. If that fails, use Moonlight's web upload. The fallback does not download cloud-only Zotero attachments.
+
+</details>
+
+<details>
+<summary><strong>Does it synchronize notes or annotations?</strong></summary>
+
+No. This version opens documents and remembers manually connected URLs. Importing Moonlight notes, synchronizing annotations, and automatically finding existing Moonlight documents are not implemented.
+
+</details>
+
+## Data and privacy
+
+- Browser preferences and manually connected document URLs stay in the local Zotero profile. This plugin does not synchronize them across devices.
+- The plugin does not extract account credentials or transfer login cookies between browsers and Zotero.
+- Opening a paper sends its online URL to the selected browser or Moonlight's web reader. Metadata lookup contacts the source site; Moonlight handles its own document processing.
+- Original Zotero metadata, notes, and attachments are not rewritten.
+- Tests use synthetic items and public sample URLs. Local profiles, personal libraries, credentials, and execution logs are excluded from publication.
+
+## Development
+
+**Requirements:** Node.js 24+ and Python 3. TypeScript is a development dependency; the plugin has no bundled third-party runtime dependencies.
+
+From the repository root:
+
+```sh
 npm ci --ignore-scripts
 npm run check
 ```
 
-`check`는 타입 검사, 동작 테스트, 번들 문법 검사, `.xpi` 패키징을 수행합니다. 패키지는 `dist`에 생성됩니다. `SHA256SUMS`에서 파일 해시를 확인할 수 있습니다.
+This runs type checking, **27 automated tests**, bundle syntax validation, and packaging. The build writes the XPI and its checksum to `dist/`.
 
-실제 Zotero 설치·메뉴·설정 검증용으로 `scripts/prepare-smoke.mjs`와 `scripts/run-smoke.ps1`을 제공합니다. 테스트는 `work` 아래의 별도 프로필과 데이터 디렉터리에서 실행되고 완료 후 해당 테스트 인스턴스를 종료합니다. 기존 라이브러리는 사용하지 않습니다.
+<details>
+<summary><strong>Project structure</strong></summary>
+
+```text
+zotero-moonlight-plugin/
+├── addon/                 # Manifest, bootstrap, settings UI, icons
+├── assets/                # Logo artwork
+├── dist/                  # Installable XPI and SHA256SUMS
+├── docs/                  # Korean guide and compatibility notes
+├── scripts/               # Build, package, isolated Zotero checks
+├── src/
+│   ├── core.ts            # URL resolution and document-link validation
+│   ├── internal-tabs.ts   # Embedded reader tabs and lifecycle
+│   └── plugin.ts          # Zotero menus, preferences, browser launch
+└── tests/                 # Automated tests and Zotero test harness
+```
+
+</details>
+
+<details>
+<summary><strong>Run the isolated Zotero checks on Windows</strong></summary>
+
+Build first, then run:
 
 ```powershell
 node scripts/prepare-smoke.mjs
 .\scripts\run-smoke.ps1
 ```
 
-검증 결과와 남은 수동 확인 항목은 [호환성 기록](docs/compatibility.md)을 참고하세요.
+These scripts create a separate profile under `work/` and use the standard Windows Zotero installation path. The test instance exits when the checks complete. Your existing library is not used. Keep generated profiles and logs out of commits.
 
-## 구조
+</details>
 
-- `src/core.ts`: 주소 정규화·선택·arXiv 변환·PDF 메타데이터·연결 데이터 검증.
-- `src/plugin.ts`: Zotero 항목 처리·브라우저 실행·설정·문서 연결·메뉴 생명주기.
-- `src/internal-tabs.ts`: 내부 웹 탭, 도구 모음, 같은 논문 탭 재사용, 안전한 종료와 세션 처리.
-- `addon`: Zotero 매니페스트, 시작 코드, 설정 화면.
-- `tests`: 단위·동작 테스트와 실제 Zotero 테스트 하네스.
-- `dist`: 설치 파일과 해시.
+**Validation:** 27 automated tests and 24 checks in an isolated Zotero 9.0.6 instance passed for v0.2.1. See [compatibility and remaining checks](docs/compatibility.md) for the limits of this verification.
 
-## 참고
+## Contributing
 
-- [Moonlight 시작 안내](https://docs.themoonlight.io/articles/2702019-get-started-with-moonlight-in-just-one-minute)
-- [Zotero 플러그인 개발 문서](https://www.zotero.org/support/dev/zotero_7_for_developers)
+For a bug report, include plugin and Zotero versions, operating system, reading mode, and steps using a public sample paper. Remove account details, private document URLs, signed links, and personal paths before sharing logs or screenshots.
 
-Moonlight의 공식 플러그인은 아니며, Moonlight의 코드·계정 토큰을 배포 파일에 포함하지 않습니다.
+For code changes, run `npm run check` and explain the resulting behavior. Areas for further work include login compatibility, broader platform testing, and publisher-specific PDF discovery.
+
+---
+
+<p align="center">
+  An unofficial integration for <a href="https://www.zotero.org/">Zotero</a> and <a href="https://www.themoonlight.io/">Moonlight</a>.<br>
+  README layout inspired by <a href="https://github.com/eli64s/readme-ai">ReadmeAI</a>.<br><br>
+  <a href="#top">Back to top ↑</a>
+</p>
