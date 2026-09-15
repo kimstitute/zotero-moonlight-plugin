@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Zotero Moonlight",
+  "version": "0.2.1",
+  "description": "첨부 PDF 없이도 논문 주소로 Moonlight에서 읽기",
+  "applications": {
+    "zotero": {
+      "id": "zotero-moonlight@local",
+      "update_url": "https://zotero-moonlight.invalid/updates.json",
+      "strict_min_version": "9.0",
+      "strict_max_version": "9.0.*"
+    }
+  },
+  "icons": {
+    "16": "content/icons/icon-16.png",
+    "32": "content/icons/icon-32.png",
+    "48": "content/icons/icon-48.png",
+    "96": "content/icons/icon-96.png",
+    "128": "content/icons/icon-128.png",
+    "256": "content/icons/icon-256.png"
+  }
+}

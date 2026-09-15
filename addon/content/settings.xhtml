@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml" title="Moonlight 설정">
+  <html:style>
+    :root {color-scheme: light dark;}
+    body, main {font: 14px system-ui; color: light-dark(#20212a,#eee);}
+    main {padding: 24px; overflow: auto;} h1 {font-size:22px; margin:0 0 8px;}
+    .brand {display:flex;align-items:center;gap:12px;} .brand h1 {margin:0;}
+    .brand img {width:48px;height:48px;border-radius:8px;}
+    p {line-height:1.6; color:light-dark(#555,#bbb);}
+    label {display:block; margin-top:18px; font-weight:600;}
+    input[type=text], select {box-sizing:border-box; width:100%; margin-top:6px; padding:9px; font:inherit;}
+    .row {display:flex; gap:8px; align-items:center;} .row input {flex:1; min-width:0;}
+    button {padding:9px 14px; font:inherit; cursor:pointer;}
+    .check {font-weight:400;display:flex;gap:8px;align-items:center;}
+    small {display:block;margin-top:5px;color:light-dark(#555,#bbb);}
+    #error {color:light-dark(#ac2222,#ff9999); min-height:20px;}
+    footer {display:flex;justify-content:flex-end;gap:8px;margin-top:20px;}
+  </html:style>
+  <html:main>
+    <html:div class="brand"><html:img id="moonlight-logo" src="chrome://zotero-moonlight/content/icons/icon-96.png" alt=""/><html:h1>Moonlight 연결</html:h1></html:div>
+    <html:p>논문 주소를 Moonlight로 엽니다. Zotero에 PDF 첨부가 없어도 사용할 수 있습니다.</html:p>
+    <html:label for="openMode">기본 열기 방식</html:label>
+    <html:select id="openMode"><html:option value="browser">Chrome / Edge에서 열기</html:option><html:option value="tab">Zotero 내부 탭에서 열기</html:option></html:select>
+    <html:small>내부 탭은 Moonlight 웹 리더를 사용합니다. Chrome과 로그인 상태가 별도이며 처음 한 번 로그인해야 할 수 있습니다.</html:small>
+    <html:label for="browser">브라우저</html:label>
+    <html:select id="browser"><html:option value="chrome">Google Chrome</html:option><html:option value="edge">Microsoft Edge</html:option></html:select>
+    <html:label for="executable">브라우저 실행 파일</html:label>
+    <html:div class="row"><html:input id="executable" type="text" placeholder="비워두면 Windows에서 자동으로 찾습니다"/><html:button id="browse">찾아보기</html:button></html:div>
+    <html:label for="profile">브라우저 프로필 폴더</html:label>
+    <html:input id="profile" type="text" placeholder="기본값 사용 · 예: Default 또는 Profile 1"/>
+    <html:small>표시 이름 대신 프로필 폴더 이름을 입력합니다. Chrome의 chrome://version에서 프로필 경로를 확인할 수 있습니다.</html:small>
+    <html:label class="check"><html:input id="localFallback" type="checkbox"/>온라인 주소가 없으면 로컬 PDF 열기</html:label>
+    <html:p id="error" role="alert"></html:p>
+    <html:footer><html:button id="test">저장하고 Moonlight 열기</html:button><html:button id="cancel">취소</html:button><html:button id="save">저장</html:button></html:footer>
+  </html:main>
+  <script src="chrome://zotero-moonlight/content/settings.js"/>
+</window>
